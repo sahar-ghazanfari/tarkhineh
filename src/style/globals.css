@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-Tint-1: #e5f2e9;
+    --color-Tint-2: #cae4d3;
+    --color-Tint-3: #b0d7bd;
+    --color-Tint-4: #96c9a7;
+    --color-Tint-5: #7cbc91;
+    --color-Tint-6: #61ae7b;
+    --color-Tint-7: #4e9968;
+    --color-primary: #417f56;
+    --color-shade-1: #396f4b;
+    --color-shade-2: #315f41;
+    --color-shade-3: #294f36;
+    --color-shade-4: #21402b;
+    --color-shade-5: #183020;
+    --color-shade-6: #102016;
+    --color-shade-7: #08100b;
+    --color-white: #ffffff;
+    --color-Gray-1: #f9f9f9;
+    --color-Gray-2: #e1e1e1;
+    --color-Gray-3: #ededed;
+    --color-Gray-4: #cbcbcb;
+    --color-Gray-5: #adadad;
+    --color-Gray-6: #757575;
+    --color-Gray-7: #717171;
+    --color-Gray-8: #353535;
+    --color-black: #0c0c0c;
+    --color-error: #c30000;
+    --color-error-light: #ed2e2e;
+    --color-error-extra-light: #fff2f2;
+    --color-success: #00966d;
+    --color-success-light: #00ba88;
+    --color-success-extra-light: #f3fdfa;
+    --color-warning: #a9791c;
+    --color-warning-light: #f4b740;
+    --color-warning-extra-light: #fff8e1;
+  }
+}
+
+html,
+body,
+* {
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-estedad);
+  outline: none;
+}
+
+@layer components {
+  .btn {
+    @apply rounded;
+  }
+  .btn--primary {
+    @apply bg-primary rounded-lg text-white;
+  }
+  .btn--secondary {
+    @apply text-primary rounded-lg border border-primary;
+  }
+  .btn--disable {
+    @apply font-semibold rounded-lg text-Gray-4 bg-Gray-3;
+  }
+  .btn--footer {
+    @apply self-end py-2 w-2/3 rounded-lg bg-transparent border placeholder:text-white;
+  }
+}
+
+.image-footer {
+  background: linear-gradient(rgba(5, 5, 5, 0.406), rgba(0, 0, 0, 0.331)),
+    url("/images/footer.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.inputs {
+  outline: none;
+  resize: none;
+  padding-right: 0.5rem;
+  border-radius: 4px;
+  background-color: transparent;
+  border: 1px solid;
+}
+
+.hide-scrollbar {
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
