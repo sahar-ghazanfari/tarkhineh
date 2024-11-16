@@ -2,11 +2,13 @@
 import Link from "next/link";
 import { PiTelegramLogo } from "react-icons/pi";
 import { FaInstagram } from "react-icons/fa";
+import { numberToFa } from "utils/numbrToPersian";
 import { SlSocialTwitter } from "react-icons/sl";
 import { useState } from "react";
 import Button from "ui/Button";
 
 function Footer() {
+  const [textArea, setTextArea] = useState("");
   const [commentForm, setCommentForm] = useState({
     names: "",
     email: "",
@@ -19,6 +21,15 @@ function Footer() {
     setCommentForm((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleGetNumOfTexts = (e) => {
+    setTextArea(e.target.value);
+  };
+
+  const handleTextArea = (e) => {
+    handleGetNumOfTexts(e);
+    handleChange(e);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(commentForm);
@@ -26,7 +37,7 @@ function Footer() {
 
   return (
     <div className="mt-12 image-footer text-white items-center grid grid-cols-4 lg:grid-cols-8">
-      <div className="flex flex-col col-start-1 lg:col-start-2 gap-y-5">
+      <div className="flex flex-col col-start-1 lg:col-start-2 gap-y-5 lg:gap-y-10">
         <h3 className="text-xl lg:text-2xl font-semibold">دسترسی‌آسان</h3>
         <Link href={"/"} className="text-sm lg:text-lg">
           پرسش‌های‌متداول
@@ -43,7 +54,7 @@ function Footer() {
           <PiTelegramLogo size={25} />
         </div>
       </div>
-      <div className="flex flex-col col-start-3 gap-y-5">
+      <div className="flex flex-col col-start-3 gap-y-5 lg:gap-y-10">
         <h3 className="text-xl lg:text-2xl font-semibold">شعبه‌های‌ترخینه</h3>
         <span href={"/"} className="text-sm lg:text-lg">
           شعبه اکباتان
@@ -61,7 +72,7 @@ function Footer() {
       <div className="hidden lg:block col-start-5 col-span-3">
         <form
           onSubmit={handleSubmit}
-          className="gap-3 grid grid-cols-2 grid-rows-4"
+          className="gap-3 grid grid-cols-2 grid-rows-4 lg:py-8"
         >
           <h3 className="text-2xl font-semibold">شعبه‌های‌ترخینه</h3>
           <input
@@ -91,14 +102,16 @@ function Footer() {
           <textarea
             name="message"
             value={commentForm.message}
-            onChange={handleChange}
+            onChange={handleTextArea}
             rows="7"
             cols="30"
             maxLength="200"
             placeholder="پیام شما"
             className="inputs col-start-2 row-start-2 row-end-5 placeholder:text-white placeholder:p-2 "
           ></textarea>
-          <span className="col-start-2 flex justify-end">۰/۲۰۰</span>
+          <span className="col-start-2 flex justify-end">
+            <span>{numberToFa(textArea.length)}</span>/۲۰۰
+          </span>
           <div className="col-start-2 flex justify-end">
             <Button variant="footer" type="submit">
               ارسال‌‌‌پیام

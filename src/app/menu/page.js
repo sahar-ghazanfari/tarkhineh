@@ -2,9 +2,9 @@
 import Slider from "components/Slider";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { FiSearch } from "react-icons/fi";
-import FoodCart from "ui/FoodCart";
 import { useRef, useState } from "react";
 import Link from "next/link";
+import FoodCart from "./foodcart/page";
 
 function Menu() {
   const scrollContainerRef = useRef(null);
