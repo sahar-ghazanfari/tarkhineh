@@ -37,7 +37,7 @@ function Footer() {
 
   return (
     <div className="mt-12 image-footer text-white items-center grid grid-cols-4 lg:grid-cols-8">
-      <div className="flex flex-col col-start-1 lg:col-start-2 gap-y-5 lg:gap-y-10">
+      <div className="flex flex-col col-start-1 lg:col-start-2 gap-y-5 lg:gap-y-7">
         <h3 className="text-xl lg:text-2xl font-semibold">دسترسی‌آسان</h3>
         <Link href={"/"} className="text-sm lg:text-lg">
           پرسش‌های‌متداول
@@ -54,7 +54,7 @@ function Footer() {
           <PiTelegramLogo size={25} />
         </div>
       </div>
-      <div className="flex flex-col col-start-3 gap-y-5 lg:gap-y-10">
+      <div className="flex flex-col col-start-3 gap-y-5 lg:gap-y-7">
         <h3 className="text-xl lg:text-2xl font-semibold">شعبه‌های‌ترخینه</h3>
         <span href={"/"} className="text-sm lg:text-lg">
           شعبه اکباتان
@@ -72,7 +72,7 @@ function Footer() {
       <div className="hidden lg:block col-start-5 col-span-3">
         <form
           onSubmit={handleSubmit}
-          className="gap-3 grid grid-cols-2 grid-rows-4 lg:py-8"
+          className="gap-3 grid grid-cols-2 grid-rows-4 lg:py-4"
         >
           <h3 className="text-2xl font-semibold">شعبه‌های‌ترخینه</h3>
           <input

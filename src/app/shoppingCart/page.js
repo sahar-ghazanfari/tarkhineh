@@ -1,17 +1,32 @@
+"use client";
 import { CiSquareCheck, CiMoneyCheck1 } from "react-icons/ci";
 import { RiShoppingCartLine } from "react-icons/ri";
 import Button from "ui/Button";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { RiDeleteBinLine } from "react-icons/ri";
+import Link from "next/link";
+import { numberToFa } from "utils/numbrToPersian";
+import { useCart } from "context/cartContext";
+// import useCart from "hooks/useCart";
 
-function page() {
+function CartView() {
+  const { cart } = useCart();
+  const totalPrice = cart.reduce(
+    (sum, item) => sum + item.price * (1 - item.discount / 100 || 1),
+    0
+  );
+  const totalDiscount = cart.reduce(
+    (sum, item) => sum + item.price * (item.discount / 100),
+    0
+  );
+
   return (
-    <div className="flex flex-col items-center justify-center">
-      <div className="block lg:hidden">
-        <div className="flex justify-between w-full">
-          <MdKeyboardArrowRight />
+    <div className="flex flex-col justify-center items-center">
+      <div className="block lg:hidden w-full my-4">
+        <div className="flex justify-between mx-10">
+          <MdKeyboardArrowRight size={20} />
           <h2>سبد خرید</h2>
-          <RiDeleteBinLine />
+          <RiDeleteBinLine size={20} />
         </div>
       </div>
       <div className="hidden lg:block w-full max-w-3xl">
@@ -30,16 +45,57 @@ function page() {
           </li>
         </ol>
       </div>
-      <div className="border-2 w-full max-w-xs sm:max-w-7xl h-auto rounded-lg">
-        <div className="flex gap-y-6 flex-col items-center justify-center py-40 lg:py-52 rounded-lg ">
-          <p className="text-Gray-6">شما در حال حاضر هیچ سفارشی ثبت نکردید!</p>
-          <Button className="px-6 py-2" variant="secondary">
-            منوی رستوران
-          </Button>
-        </div>
+      <div className="w-full">
+        {cart.length === 0 ? (
+          <div className="flex flex-col justify-center items-center gap-y-4 border-2 lg:mx-20 mx-10 py-40 rounded-lg">
+            <p className="text-Gray-6">
+              شما در حال حاضر هیچ سفارشی ثبت نکردید!
+            </p>
+            <Button className="px-6 py-2" variant="secondary">
+              <Link href={"/menu"}>منوی رستوران</Link>
+            </Button>
+          </div>
+        ) : (
+          <div className="grid lg:grid-cols-9 grid-cols-1 gap-x-12 mx-10 gap-y-6">
+            <div className="border h-96 lg:col-start-2 lg:col-span-4">
+              {cart.map((item) => (
+                <div key={item.id}>
+                  <p>{item.name}</p>
+                  <p>{item.price} تومان</p>
+                </div>
+              ))}
+            </div>
+            <div className="border h-fit lg:col-start-6 lg:col-span-3 p-8">
+              <div className="flex justify-between border-b-2 mx-2 py-3">
+                <span>سبد خرید ({cart.length})</span>
+                <RiDeleteBinLine />
+              </div>
+              <div className="flex justify-between border-b-2 mx-2 py-3">
+                <span>تخفیف محصولات</span>
+                <span>{numberToFa(totalDiscount.toLocaleString())} تومان</span>
+              </div>
+              <div className="flex justify-between border-b-2 mx-2 py-3">
+                <span>هزینه ارسال</span>
+                <span>۰ تومان</span>
+              </div>
+              <div className="flex justify-between border-b-2 mx-2 py-3">
+                <span>مبلغ قابل پرداخت</span>
+                <div>
+                  <span>
+                    <span>{numberToFa(totalPrice.toLocaleString())}</span>
+                  </span>
+                  <span> تومان</span>
+                </div>
+              </div>
+              <Button className="w-full py-3" variant="primary">
+                تایید سفارش
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
 }
 
-export default page;
+export default CartView;

@@ -39,10 +39,10 @@ export default function Home() {
 
   return (
     <div>
-      <Slider images={images} buttonShowing={true} />
-      <Menus />
-      <About />
-      <Branchs />
+        <Slider images={images} buttonShowing={true} />
+        <Menus />
+        <About />
+        <Branchs />
     </div>
   );
 }
