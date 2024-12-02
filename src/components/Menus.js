@@ -46,9 +46,12 @@ function Menus() {
                   className="-translate-y-1/2"
                 />
               </div>
-              <button className="flex px-10 py-3 rounded-lg absolute bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2  justify-center font-semibold text-Gray-8 bg-white shadow-lg">
-                <Link href={`${item.links}`}>{item.description}</Link>
-              </button>
+                <Link
+                  className="flex px-10 py-3 rounded-lg absolute bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2  justify-center font-semibold text-Gray-8 bg-white shadow-lg"
+                  href={`${item.links}`}
+                >
+                  {item.description}
+                </Link>
             </div>
           ))}
         </div>

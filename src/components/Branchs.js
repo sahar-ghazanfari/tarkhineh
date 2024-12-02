@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import Button from "ui/Button";
@@ -73,12 +74,12 @@ function Branchs() {
               {isHovering === id ? (
                 <div className="flex justify-center">
                   <div className="hidden lg:block transition-all duration-1000 ease-in ">
-                    <Button
-                      variant="secondary"
-                      className="flex px-6 py-2 items-center mb-3 font-semibold"
+                    <Link
+                    href={"/branchs"}
+                      className="flex px-6 py-2 items-center mb-3 font-semibold text-primary border rounded border-primary"
                     >
                       صفحه شعبه <IoIosArrowBack />
-                    </Button>
+                    </Link>
                   </div>
                 </div>
               ) : (

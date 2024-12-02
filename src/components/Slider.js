@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import Button from "ui/Button";
+import Link from "next/link";
 
 function Slider({ images, buttonShowing }) {
   let [activeImage, setActiveImage] = useState(0);
@@ -61,12 +62,12 @@ function Slider({ images, buttonShowing }) {
             </div>
             <div className="flex flex-col items-center mt-10 lg:mt-14">
               {buttonShowing && (
-                <Button
-                  variant="primary"
-                  className="lg:font-semibold mb-5 px-4 lg:px-8 py-1 lg:py-2 flex justify-center text-sm"
+                <Link
+                  href={"/menu"}
+                  className="rounded text-white bg-primary lg:font-semibold mb-5 px-4 lg:px-8 py-1 lg:py-2 flex justify-center text-sm"
                 >
                   سفارش‌آنلاین‌غذا
-                </Button>
+                </Link>
               )}
               <div className="flex items-end">
                 <div className="w-6 h-8 lg:w-10 lg:h-10 bg-transparent rounded-full shadow-[-1rem_1.3rem_0_0_white]"></div>

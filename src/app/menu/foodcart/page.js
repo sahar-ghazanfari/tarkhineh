@@ -10,7 +10,6 @@ import { IoClose } from "react-icons/io5";
 import toast, { Toaster } from "react-hot-toast";
 import Link from "next/link";
 import { useCart } from "context/cartContext";
-// import useCart from "hooks/useCart";
 
 function FoodCart() {
   const [data, setData] = useState(null);
@@ -58,14 +57,9 @@ function FoodCart() {
   return (
     <div>
       <div className="flex justify-end">
-        <Link href={"/shoppingCart"}>
-          <Button
-            variant="secondary"
-            className="flex items-center lg:px-10 py-2 px-5"
-          >
-            <RiShoppingCartLine />
-            تکمیل خرید
-          </Button>
+        <Link className="flex items-center gap-x-2 text-primary border border-primary rounded px-10 py-2" href={"/shoppingCart"}>
+          <RiShoppingCartLine />
+          تکمیل خرید
         </Link>
       </div>
       <div className="grid items-end grid-cols-1 md:grid-cols-2 gap-4">

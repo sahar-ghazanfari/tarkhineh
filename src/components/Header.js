@@ -71,18 +71,16 @@ function Header() {
             />
           </div>
         </button>
-        <Link href="/shoppingCart">
-          <button
-            className={`p-2 rounded ${
-              isActive("/shoppingCart")
-                ? "bg-primary text-white"
-                : "bg-Tint-1 text-primary"
-            }`}
-          >
-            <RiShoppingCartLine size={25} />
-          </button>
+        <Link
+          href="/shoppingCart"
+          className={`p-2 rounded ${
+            isActive("/shoppingCart")
+              ? "bg-primary text-white"
+              : "bg-Tint-1 text-primary"
+          }`}
+        >
+          <RiShoppingCartLine size={25} />
         </Link>
-        {/* <Link href="/authentication"> */}
         <button
           onClick={openModal}
           className={`p-2 rounded ${
@@ -93,7 +91,6 @@ function Header() {
         >
           <FiUser size={25} />
         </button>
-        {/* </Link> */}
         <AuthModal isOpen={isModalOpen} onClose={closeModal} />
       </div>
     </div>

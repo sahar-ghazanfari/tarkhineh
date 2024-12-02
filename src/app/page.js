@@ -1,7 +1,9 @@
+"use client";
 import About from "components/About";
 import Branchs from "components/Branchs";
 import Menus from "components/Menus";
 import Slider from "components/Slider";
+import { CartProvider } from "context/cartContext";
 
 export default function Home() {
   const images = [
@@ -39,10 +41,12 @@ export default function Home() {
 
   return (
     <div>
+      <CartProvider>
         <Slider images={images} buttonShowing={true} />
         <Menus />
         <About />
         <Branchs />
+      </CartProvider>
     </div>
   );
 }
