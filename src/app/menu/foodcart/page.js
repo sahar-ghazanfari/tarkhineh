@@ -11,10 +11,11 @@ import toast, { Toaster } from "react-hot-toast";
 import Link from "next/link";
 import { useCart } from "context/cartContext";
 
-function FoodCart() {
+function FoodCart({ searchQuery }) {
   const [data, setData] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedFood, setSelectedFood] = useState(null);
+  const [filteredProducts, setFilteredFoods] = useState([]);
 
   const { addToCart } = useCart();
 
@@ -41,6 +42,19 @@ function FoodCart() {
       });
   }, []);
 
+useEffect(() => {
+  if (!data) return;
+
+  if (searchQuery === "") {
+    setFilteredFoods(data);
+  } else {
+    const filtered = data.filter((item) =>
+      item.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredFoods(filtered);
+  }
+}, [searchQuery, data]);
+
   let lastCategory = "";
 
   const openModal = (food) => {
@@ -57,13 +71,16 @@ function FoodCart() {
   return (
     <div>
       <div className="flex justify-end">
-        <Link className="flex items-center gap-x-2 text-primary border border-primary rounded px-10 py-2" href={"/shoppingCart"}>
+        <Link
+          className="flex items-center gap-x-2 text-primary border border-primary rounded px-10 py-2"
+          href={"/shoppingCart"}
+        >
           <RiShoppingCartLine />
           تکمیل خرید
         </Link>
       </div>
       <div className="grid items-end grid-cols-1 md:grid-cols-2 gap-4">
-        {data?.map((item) => {
+        {filteredProducts?.map((item) => {
           const showCategory = item.category !== lastCategory;
           if (showCategory) {
             lastCategory = item.category;

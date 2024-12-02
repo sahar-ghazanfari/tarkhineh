@@ -9,6 +9,7 @@ import FoodCart from "./foodcart/page";
 function Menu() {
   const scrollContainerRef = useRef(null);
   const [isEnd, setIsEnd] = useState(false);
+   const [searchQuery, setSearchQuery] = useState(""); 
 
   const scrollContent = (direction) => {
     if (scrollContainerRef.current) {
@@ -121,6 +122,8 @@ function Menu() {
             </div>
             <input
               type="search"
+              onChange={(e) => setSearchQuery(e.target.value)}
+              value={searchQuery}
               placeholder="جستجو"
               className="outline-none w-full p-2 border-2 border-Gray-4 placeholder:text-Gray-8 rounded-lg"
             />
@@ -134,7 +137,7 @@ function Menu() {
             </button>
           </div>
         </div>
-        <FoodCart />
+        <FoodCart searchQuery={searchQuery} />
       </div>
     </div>
   );
