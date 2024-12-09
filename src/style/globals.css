@@ -66,6 +66,14 @@ body,
   .btn--footer {
     @apply self-end py-2 w-2/3 rounded-lg bg-transparent border placeholder:text-white;
   }
+
+  .before-after-dots-slide{
+    @apply w-6 h-8 dark:hidden lg:w-10 lg:h-10 bg-transparent rounded-full
+  }
+
+  .menu-cateegory {
+    @apply hover:font-bold hover:text-primary hover:border-b-2 border-transparent py-4 hover:border-primary
+  }
 }
 
 .image-footer {

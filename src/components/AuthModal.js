@@ -5,8 +5,6 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import Button from "ui/Button";
-import User from "app/user/page";
-import toast from "react-hot-toast";
 
 const AuthModal = ({ isOpen, onClose }) => {
   const [phoneNumber, setPhoneNumber] = useState("");

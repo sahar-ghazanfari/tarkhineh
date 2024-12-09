@@ -76,25 +76,25 @@ function Menu() {
       <div className="bg-Gray-3 relative z-10 flex text-lg md:text-xl gap-x-4 md:gap-x-8 text-Gray-7 lg:px-28">
         <Link
           href="#"
-          className="hover:font-bold hover:text-primary hover:border-b-2 border-transparent py-4 hover:border-primary"
+          className="menu-cateegory"
         >
           غذای اصلی
         </Link>
         <Link
           href="#"
-          className="hover:font-bold hover:text-primary hover:border-b-2 border-transparent py-4 hover:border-primary"
+          className="menu-cateegory"
         >
           پیش غذا
         </Link>
         <Link
           href="#"
-          className="hover:font-bold hover:text-primary hover:border-b-2 border-transparent py-4 hover:border-primary"
+          className="menu-cateegory"
         >
           دسر
         </Link>
         <Link
           href="#"
-          className="hover:font-bold hover:text-primary hover:border-b-2 border-transparent py-4 hover:border-primary"
+          className="menu-cateegory"
         >
           نوشیدنی
         </Link>
