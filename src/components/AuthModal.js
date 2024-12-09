@@ -32,6 +32,9 @@ const AuthModal = ({ isOpen, onClose }) => {
     if (phoneNumber.trim() === "") {
       return;
     }
+    if (phoneNumber.length < 11) {
+      return null;
+    }
     localStorage.setItem("phoneNumber", phoneNumber);
     setIsLoggedIn(true);
   };
@@ -88,11 +91,7 @@ const AuthModal = ({ isOpen, onClose }) => {
             </div>
             <div className="mb-4 flex justify-center ">
               <Button
-                variant={
-                  phoneNumber === "" || phoneNumber.length < 11
-                    ? "disable"
-                    : "primary"
-                }
+                variant={phoneNumber.length < 11 ? "disable" : "primary"}
                 className="font-semibold w-full py-2 "
                 onClick={handleLogin}
               >
