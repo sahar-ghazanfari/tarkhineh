@@ -46,14 +46,6 @@ function FoodCart({ searchQuery }) {
       .catch((error) => console.error("Error:", error));
   }, []);
 
-  // useEffect(() => {
-  //    fetch("/db.json")
-  //      .then((res) => res.json())
-  //      .then((data) => {
-  //        setData(data);
-  //      });
-  // }, []);
-
   useEffect(() => {
     if (!data) return;
 
@@ -72,6 +64,12 @@ function FoodCart({ searchQuery }) {
   const openModal = (food) => {
     setSelectedFood(food);
     setIsModalOpen(true);
+  };
+
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      setIsModalOpen(false);
+    }
   };
 
   const getDiscountedPrice = (price, discount) => {
@@ -176,7 +174,10 @@ function FoodCart({ searchQuery }) {
         })}
       </div>
       {isModalOpen && (
-        <div className="fixed inset-0 backdrop-blur-sm bg-gray-950 bg-opacity-40 flex justify-center items-center z-50">
+        <div
+          onClick={() => setIsModalOpen(false)}
+          className="fixed inset-0 backdrop-blur-sm bg-gray-950 bg-opacity-40 flex justify-center items-center z-50"
+        >
           <div className="bg-white rounded-lg max-w-xl w-full">
             <div className="flex justify-between p-4">
               <h2 className="text-xl font-bold text-Gray-8">اطلاعات محصول</h2>

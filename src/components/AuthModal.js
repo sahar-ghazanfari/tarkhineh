@@ -52,7 +52,10 @@ const AuthModal = ({ isOpen, onClose }) => {
       {isLoggedIn ? (
         <button onClick={handleLogout}>close</button>
       ) : (
-        <div className="fixed backdrop-brightness-50  inset-0 backdrop-blur-sm flex items-center justify-center z-50">
+        <div
+          onClick={onClose}
+          className="fixed backdrop-brightness-50  inset-0 backdrop-blur-sm flex items-center justify-center z-50"
+        >
           <div className="p-6 bg-white rounded-lg max-w-md w-full relative">
             <div className="flex justify-center">
               <button
