@@ -12,7 +12,7 @@ import Link from "next/link";
 import { useCart } from "context/cartContext";
 
 function FoodCart({ searchQuery }) {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedFood, setSelectedFood] = useState(null);
   const [filteredProducts, setFilteredFoods] = useState([]);
@@ -42,7 +42,7 @@ function FoodCart({ searchQuery }) {
         }
         return response.json();
       })
-      .then((data) => setProducts(data))
+      .then((data) => setData(data))
       .catch((error) => console.error("Error:", error));
   }, []);
 
