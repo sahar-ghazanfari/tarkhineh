@@ -70,7 +70,7 @@ function Slider({ images, buttonShowing }) {
                 </Link>
               )}
               <div className="flex items-end">
-                <div className="w-6 h-8 lg:w-10 lg:h-10 bg-transparent rounded-full shadow-[-1rem_1.3rem_0_0_white]"></div>
+                <div className="w-6 h-8 dark:hidden lg:w-10 lg:h-10 bg-transparent rounded-full shadow-[-1rem_1.3rem_0_0_white]"></div>
                 <div className="w-24 bg-white bottom-0 h-6 lg:h-8 rounded-t-xl flex justify-center items-center gap-x-1">
                   {images.map((image, index) => (
                     <div
@@ -84,7 +84,7 @@ function Slider({ images, buttonShowing }) {
                     />
                   ))}
                 </div>
-                <div className="w-6 h-8 lg:w-10 lg:h-10 bg-transparent rounded-full shadow-[1rem_1.3rem_0_0_white]"></div>
+                <div className="w-6 h-8 dark:hidden lg:w-10 lg:h-10 bg-transparent rounded-full shadow-[1rem_1.3rem_0_0_white]"></div>
               </div>
             </div>
           </div>

@@ -161,10 +161,10 @@ function FoodCart({ searchQuery }) {
                   </div>
                   <Button
                     variant="primary"
-                    className="text-nowrap col-start-3 row-start-3 text-xs lg:text-lg"
+                    className="text-nowrap col-start-3 row-start-3 text-xs lg:text-sm mx-4 my-1"
                     onClick={() => handleAddToCart(item)}
                   >
-                    افزودن به سبد خرید
+                    افزودن به سبد
                   </Button>
                   <Toaster />
                 </div>
