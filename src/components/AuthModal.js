@@ -9,7 +9,6 @@ import User from "app/user/page";
 import toast from "react-hot-toast";
 
 const AuthModal = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const router = useRouter();
@@ -27,6 +26,8 @@ const AuthModal = ({ isOpen, onClose }) => {
       router.push("/user");
     }
   }, [isLoggedIn, router]);
+
+  if (!isOpen) return null;
 
   const handleLogin = () => {
     if (phoneNumber.trim() === "") {
