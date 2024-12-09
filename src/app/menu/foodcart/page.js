@@ -35,25 +35,37 @@ function FoodCart({ searchQuery }) {
   };
 
   useEffect(() => {
-    fetch("http://localhost:3001/foods")
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-      });
+    fetch("/db.json")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        return response.json();
+      })
+      .then((data) => setProducts(data))
+      .catch((error) => console.error("Error:", error));
   }, []);
 
-useEffect(() => {
-  if (!data) return;
+  // useEffect(() => {
+  //    fetch("/db.json")
+  //      .then((res) => res.json())
+  //      .then((data) => {
+  //        setData(data);
+  //      });
+  // }, []);
 
-  if (searchQuery === "") {
-    setFilteredFoods(data);
-  } else {
-    const filtered = data.filter((item) =>
-      item.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setFilteredFoods(filtered);
-  }
-}, [searchQuery, data]);
+  useEffect(() => {
+    if (!data) return;
+
+    if (searchQuery === "") {
+      setFilteredFoods(data);
+    } else {
+      const filtered = data.filter((item) =>
+        item.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredFoods(filtered);
+    }
+  }, [searchQuery, data]);
 
   let lastCategory = "";
 
