@@ -39,13 +39,7 @@ function Header() {
         <HamburgerMenu />
       </div>
       <div className="relative w-24 h-12">
-        <Image
-          src={logo}
-          // priority
-          alt="logo"
-          fill
-          sizes="(max-width: 768px) 100vw"
-        />
+        <Image src={logo} alt="logo" fill sizes="(max-width: 768px) 100vw" />
       </div>
       <div className="hidden lg:block">
         <ul className="flex gap-x-6 text-Gray-7 items-center">
