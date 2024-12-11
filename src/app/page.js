@@ -3,6 +3,7 @@ import About from "components/About";
 import Branchs from "components/Branchs";
 import Menus from "components/Menus";
 import Slider from "components/Slider";
+import { AuthProvider } from "context/AuthContext";
 import { CartProvider } from "context/cartContext";
 
 export default function Home() {
@@ -41,12 +42,14 @@ export default function Home() {
 
   return (
     <div>
-      <CartProvider>
-        <Slider images={images} buttonShowing={true} />
-        <Menus />
-        <About />
-        <Branchs />
-      </CartProvider>
+      <AuthProvider>
+        <CartProvider>
+          <Slider images={images} buttonShowing={true} />
+          <Menus />
+          <About />
+          <Branchs />
+        </CartProvider>
+      </AuthProvider>
     </div>
   );
 }

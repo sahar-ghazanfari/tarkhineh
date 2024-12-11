@@ -1,58 +1,31 @@
+// components/AuthModal.js
 "use client";
 import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
+import { useState } from "react";
 import Button from "ui/Button";
+import { useAuth } from "context/AuthContext";
+import Link from "next/link";
 
 const AuthModal = ({ isOpen, onClose }) => {
+  const { handleLogin, isLoggedIn } = useAuth();
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const router = useRouter();
-
-  useEffect(() => {
-    const savedPhoneNumber = localStorage.getItem("phoneNumber");
-    if (savedPhoneNumber) {
-      setPhoneNumber(savedPhoneNumber);
-      setIsLoggedIn(true);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      router.push("/user");
-    }
-  }, [isLoggedIn, router]);
 
   if (!isOpen) return null;
 
-  const handleLogin = () => {
-    if (phoneNumber.trim() === "") {
-      return;
+  const handleSubmit = () => {
+    if (phoneNumber.trim() && phoneNumber.length === 11) {
+      handleLogin(phoneNumber);
+      onClose();
     }
-    if (phoneNumber.length < 11) {
-      return null;
-    }
-    localStorage.setItem("phoneNumber", phoneNumber);
-    setIsLoggedIn(true);
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem("phoneNumber");
-    setPhoneNumber("");
-    setIsLoggedIn(false);
-    onClose();
   };
 
   return (
     <>
       {isLoggedIn ? (
-        <button onClick={handleLogout}>close</button>
+        ""
       ) : (
-        <div
-          className="fixed backdrop-brightness-50  inset-0 backdrop-blur-sm flex items-center justify-center z-50"
-        >
+        <div className="fixed backdrop-brightness-50  inset-0 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="p-6 bg-white rounded-lg max-w-md w-full relative">
             <div className="flex justify-center">
               <button
@@ -94,7 +67,7 @@ const AuthModal = ({ isOpen, onClose }) => {
               <Button
                 variant={phoneNumber.length < 11 ? "disable" : "primary"}
                 className="font-semibold w-full py-2 "
-                onClick={handleLogin}
+                onClick={handleSubmit}
               >
                 ادامه
               </Button>

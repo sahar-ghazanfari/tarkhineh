@@ -74,6 +74,10 @@ body,
   .menu-cateegory {
     @apply hover:font-bold hover:text-primary hover:border-b-2 border-transparent py-4 hover:border-primary
   }
+
+  .user-input {
+    @apply border w-2/3 p-1 rounded-md justify-self-center
+  }
 }
 
 .image-footer {

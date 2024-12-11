@@ -5,10 +5,11 @@ import { FiSearch, FiUser } from "react-icons/fi";
 import { RiShoppingCartLine } from "react-icons/ri";
 import { useState } from "react";
 import SearchInput from "ui/SearchInput";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import HamburgerMenu from "ui/HamburgerMenu";
 import AuthModal from "./AuthModal";
 import logo from "../../public/images/logo.svg";
+import { useAuth } from "context/AuthContext";
 
 const listItem = [
   { id: 1, links: "/", name: "صفحه‌اصلی" },
@@ -20,15 +21,24 @@ const listItem = [
 ];
 
 function Header() {
+  const { isLoggedIn } = useAuth();
   const [searchInput, setSearchInput] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   const handleSearchInputOpen = () => {
     setSearchInput(!searchInput);
   };
 
-  const openModal = () => setIsModalOpen(true);
+  const handleOpenModalOrUserAuth = () => {
+    if (isLoggedIn) {
+      router.push("/user");
+    } else {
+      setIsModalOpen(true);
+    }
+  };
+
   const closeModal = () => setIsModalOpen(false);
 
   const isActive = (path) => pathname === path;
@@ -76,9 +86,9 @@ function Header() {
           <RiShoppingCartLine size={25} />
         </Link>
         <button
-          onClick={openModal}
+          onClick={handleOpenModalOrUserAuth}
           className={`p-2 rounded ${
-            isActive("/authentication")
+            isActive("/user")
               ? "bg-primary text-white"
               : "bg-Tint-1 text-primary"
           }`}
